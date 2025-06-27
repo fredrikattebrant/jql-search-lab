@@ -19,14 +19,15 @@ function App() {
                 },
             };
             const response = await requestJira(filterUrl, options);
-            const json = await response.json();
-            console.log("Filter response:", json);
+            const filterResult = await response.json();
+            console.log("Filter response:", filterResult);
+            console.log("Filter jql:", filterResult.jql);
 
-            const jql = json.jql;
+            const jql = filterResult.jql;
             const jqlUrl = `/rest/api/3/search/jql?jql=${jql}`;
-            const jqlResponse = await requestJira(jqlUrl, options);
-            const jqlJson = await jqlResponse.json();
-            console.log(jqlJson);
+            const searchResponse = await requestJira(jqlUrl, options);
+            const searchResult = await searchResponse.json();
+            console.log("Search results", searchResult);
           } catch (error) {
             console.error(error);
           }
