@@ -1,5 +1,21 @@
-# Forge Hello World
+# JQL testing
 
+- Create a label with the value "Foo & Bar"
+- Set the label on one or more workitems
+- Create a filter searching for workitems where the label has "Foo & Bar":
+
+JQL: `labels = "Bar&Foo"`
+
+- Note the filter id, e.g. 12345
+- Edit App.js to use the filter id
+- Build, Deploy, Install and run the App.
+- Open the developer console and check the "Filter response:" and "Search results" messages.
+- The "Search results" contains the error from the JQL search API.
+
+This should reproduce the "ampersand in JQL" problem.
+
+
+## Original forge readme below
 This project contains a Forge app written in JavaScript that displays `Hello World!` in a Jira global page.
 
 See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
