@@ -9,6 +9,7 @@ function App() {
     }, []);
 
     useEffect(async () => {
+        const start = performance.now();
         try {
             const filterId = 10663;
             const filterUrl = `/rest/api/3/filter/${filterId}`;
@@ -34,6 +35,25 @@ function App() {
           } catch (error) {
             console.error(error);
           }
+          const end = performance.now();
+          console.log(`ALT1: ${end - start} ms`);
+    }, []);
+
+    useEffect(async() => {
+        const start = performance.now();
+        const filterId = 10663;
+        const filterJql = `/rest/api/3/search/jql?jql=filter=${filterId}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        const response = await requestJira(filterJql, options);
+        const result = await response.json();
+        console.log(`Issues by JQL: filter=${filterId}:`, result);
+        const end = performance.now();
+        console.log(`ALT2: ${end - start} ms`);
     }, []);
 
     return (
