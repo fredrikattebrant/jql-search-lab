@@ -24,7 +24,10 @@ function App() {
             console.log("Filter jql:", filterResult.jql);
 
             const jql = filterResult.jql;
-            const jqlUrl = `/rest/api/3/search/jql?jql=${jql}`;
+
+            const jqlEncoded = encodeURIComponent(jql);
+            console.log("JQL encoded:", jqlEncoded);
+            const jqlUrl = `/rest/api/3/search/jql?jql=${jqlEncoded}`;
             const searchResponse = await requestJira(jqlUrl, options);
             const searchResult = await searchResponse.json();
             console.log("Search results", searchResult);
