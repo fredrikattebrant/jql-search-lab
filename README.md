@@ -14,6 +14,8 @@ JQL: `labels = "Bar&Foo"`
 
 This should reproduce the "ampersand in JQL" problem.
 
+**UPDATE**
+Either encode the JQL payload or use `jql=filter=10063` directly.
 
 ## Original forge readme below
 This project contains a Forge app written in JavaScript that displays `Hello World!` in a Jira global page.
